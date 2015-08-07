@@ -10,7 +10,16 @@ namespace LearnNHibernate.Run
     {
         static void Main(string[] args)
         {
-            (new Repository()).Run();
+            var repository = new Repository();
+
+            repository.AddCustomer(DateTime.Now.Ticks.ToString());
+
+            foreach (var customer in repository.GetCustomers())
+            {
+                Console.WriteLine("{0}\t{1}", customer.Number, customer.Name);
+            }
+
+            Console.ReadLine();
         }
     }
 }
