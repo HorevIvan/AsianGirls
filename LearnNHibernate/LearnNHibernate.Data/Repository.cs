@@ -29,7 +29,7 @@ namespace LearnNHibernate
             return sessionFactory.OpenSession();
         }
 
-        protected ResultType Try<ResultType>(Func<ISession, ITransaction, ResultType> function)
+        protected ResultType Try<ResultType>(Func<ISession, ResultType> function)
         {
             using (var session = GetSession())
             {
@@ -37,7 +37,7 @@ namespace LearnNHibernate
                 {
                     try
                     {
-                        var result = function(session, transaction);
+                        var result = function(session);
 
                         transaction.Commit();
 
@@ -55,23 +55,25 @@ namespace LearnNHibernate
             }
         }
 
+        protected T Save<T>(ISession session, Func<T> constructor)
+        {
+            var item = constructor();
+
+            session.Save(item);
+
+            return item;
+        }
+
         #region Customer
 
         public Customer AddCustomer(String name)
         {
-            return Try((session, transaction) =>
-            {
-                var customer = new Customer { Name = DateTime.Now.Ticks.ToString() };
-
-                session.Save(customer);
-
-                return customer;
-            });
+            return Try((session) => Save(session, () => new Customer { Name = name }));
         }
 
         public IEnumerable<Customer> GetCustomers()
         {
-            return Try((session, transaction) => session.CreateCriteria<Customer>().List<Customer>());
+            return Try((session) => session.CreateCriteria<Customer>().List<Customer>());
         }
 
         #endregion
