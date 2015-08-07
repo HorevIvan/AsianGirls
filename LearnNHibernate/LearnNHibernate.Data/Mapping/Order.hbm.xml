@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="LearnNHibernate" namespace="LearnNHibernate" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Order" table="Orders" lazy="true" >
+    <id name="Number" column="Number">
+      <generator class="identity" />
+    </id>
+    <many-to-one name="Customer">
+      <column name="CustomerNumber" sql-type="int" not-null="true" />
+    </many-to-one>
+    <property name="Cost">
+      <column name="Cost" sql-type="decimal" not-null="true" />
+    </property>
+    <property name="ProductName">
+      <column name="ProductName" sql-type="nvarchar" not-null="true" />
+    </property>
+    <property name="SaleDateAndTime">
+      <column name="SaleDateAndTime" sql-type="datetime2" not-null="true" />
+    </property>
+  </class>
+</hibernate-mapping>

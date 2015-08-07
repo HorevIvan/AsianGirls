@@ -14,12 +14,22 @@ namespace LearnNHibernate.Run
 
             repository.AddCustomer(DateTime.Now.Ticks.ToString());
 
-            foreach (var customer in repository.GetCustomers())
-            {
-                Console.WriteLine("{0}\t{1}", customer.Number, customer.Name);
-            }
+            repository.GetCustomers().ForEach(PrintCustomer);
 
             Console.ReadLine();
+        }
+
+        private static void PrintCustomer(Customer customer)
+        {
+            Console.WriteLine("{0}\t{1}", customer.Number, customer.Name);
+        }
+    }
+
+    internal static class Extensions
+    {
+        public static void ForEach<T>(this IEnumerable<T> collection, Action<T> action)
+        {
+            collection.ToList().ForEach(action);
         }
     }
 }
