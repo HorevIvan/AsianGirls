@@ -68,12 +68,12 @@ namespace LearnNHibernate
 
         public Customer AddCustomer(String name)
         {
-            return Try((session) => Save(session, () => new Customer { Name = name }));
+            return Try(session => Save(session, () => new Customer { Name = name }));
         }
 
         public IEnumerable<Customer> GetCustomers()
         {
-            return Try((session) => session.CreateCriteria<Customer>().List<Customer>());
+            return Try(session => session.CreateCriteria<Customer>().List<Customer>());
         }
 
         #endregion
