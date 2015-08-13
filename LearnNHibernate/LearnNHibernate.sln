@@ -5,14 +5,14 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearnNHibernate", "LearnNHibernate\LearnNHibernate.csproj", "{54DE953F-D342-48FA-BFCF-09CD9255E1BE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearnNHibernate.Run", "LearnNHibernate.Run\LearnNHibernate.Run.csproj", "{B8E9A46F-5FDA-45BA-BE6A-88AF978F0483}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearnNHibernate.Data", "LearnNHibernate.Data\LearnNHibernate.Data.csproj", "{3D56C04A-1B3F-4373-B102-E9615E960FC2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{95E4217A-CDDC-481C-A69F-B0DCA199E926}"
 	ProjectSection(SolutionItems) = preProject
 		Tables.sql = Tables.sql
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearnNHibernate.UnitTests", "LearnNHibernate.UnitTests\LearnNHibernate.UnitTests.csproj", "{78A2623D-1325-4B26-A38E-7087CC43B76D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,14 +24,14 @@ Global
 		{54DE953F-D342-48FA-BFCF-09CD9255E1BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54DE953F-D342-48FA-BFCF-09CD9255E1BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{54DE953F-D342-48FA-BFCF-09CD9255E1BE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B8E9A46F-5FDA-45BA-BE6A-88AF978F0483}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B8E9A46F-5FDA-45BA-BE6A-88AF978F0483}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B8E9A46F-5FDA-45BA-BE6A-88AF978F0483}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B8E9A46F-5FDA-45BA-BE6A-88AF978F0483}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3D56C04A-1B3F-4373-B102-E9615E960FC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3D56C04A-1B3F-4373-B102-E9615E960FC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D56C04A-1B3F-4373-B102-E9615E960FC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D56C04A-1B3F-4373-B102-E9615E960FC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78A2623D-1325-4B26-A38E-7087CC43B76D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78A2623D-1325-4B26-A38E-7087CC43B76D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78A2623D-1325-4B26-A38E-7087CC43B76D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78A2623D-1325-4B26-A38E-7087CC43B76D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

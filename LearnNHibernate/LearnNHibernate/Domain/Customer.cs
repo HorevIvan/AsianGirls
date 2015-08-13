@@ -1,13 +1,15 @@
 using System;
 using System.Text;
 using System.Collections.Generic;
+using LearnNHibernate.Domain;
 
 
 namespace LearnNHibernate
 {
-    public class Customer {
-        public virtual int Number { get; set; }
+    public class Customer : Base
+    {
         public virtual string Name { get; set; }
-        public virtual IEnumerable<Order> Orders { get; set; }  
+
+        public virtual IEnumerable<Order> Orders { get; set; }
     }
 }
