@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using LearnNHibernate.Domain;
 using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Dialect;
@@ -55,27 +56,69 @@ namespace LearnNHibernate
             }
         }
 
-        protected T Save<T>(ISession session, Func<T> constructor)
+        protected T Save<T>(ISession session, T item)
+            where T : Base
         {
-            var item = constructor();
-
             session.Save(item);
 
             return item;
+        }
+
+        protected IEnumerable<T> GetAll<T>()
+            where T : Base
+        {
+            return Try(session => session.CreateCriteria<T>().List<T>());
         }
 
         #region Customer
 
         public Customer AddCustomer(String name)
         {
-            return Try(session => Save(session, () => new Customer { Name = name }));
+            var customer = new Customer
+            {
+                Name = name,
+            };
+
+            return Try(session => Save(session, customer));
         }
 
         public IEnumerable<Customer> GetCustomers()
         {
-            return Try(session => session.CreateCriteria<Customer>().List<Customer>());
+            return GetAll<Customer>();
         }
 
         #endregion
+
+        #region Order
+
+        public Order AddOrder(Decimal cost, String productName, Customer customer)
+        {
+            var order = new Order
+            {
+                Cost = cost,
+                ProductName = productName,
+                SaleDateAndTime = GetCurrentDateTime(),
+                Customer = customer,
+            };
+
+            return Try(session => Save(session,  order));
+        }
+
+        public IEnumerable<Order> GetOrders()
+        {
+            return GetAll<Order>();
+        }
+
+        public IEnumerable<Order> GetCustomerOrders(Customer customer)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
+
+        public static DateTime GetCurrentDateTime()
+        {
+            return DateTime.Now;
+        }
     }
 }
