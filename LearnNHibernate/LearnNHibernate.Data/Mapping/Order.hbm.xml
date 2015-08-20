@@ -4,9 +4,6 @@
     <id name="Number" column="Number">
       <generator class="identity" />
     </id>
-    <many-to-one name="Customer">
-      <column name="CustomerNumber" sql-type="int" not-null="true" />
-    </many-to-one>
     <property name="Cost">
       <column name="Cost" sql-type="decimal" not-null="true" />
     </property>
@@ -16,5 +13,8 @@
     <property name="SaleDateAndTime">
       <column name="SaleDateAndTime" sql-type="datetime2" not-null="true" />
     </property>
+    <many-to-one name="User">
+      <column name="UserNumber" sql-type="int" not-null="true" />
+    </many-to-one>
   </class>
 </hibernate-mapping>

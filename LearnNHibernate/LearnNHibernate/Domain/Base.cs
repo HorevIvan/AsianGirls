@@ -8,11 +8,11 @@ namespace LearnNHibernate.Domain
 {
     public class Base
     {
-        public virtual int Number { set; get; }
+        public virtual Int32 Number { set; get; }
 
         public override int GetHashCode()
         {
-            return Number;
+            return Number.GetHashCode();
         }
     }
 }

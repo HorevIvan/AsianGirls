@@ -52,7 +52,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Mapping\Customer.hbm.xml" />
+    <EmbeddedResource Include="Mapping\User.hbm.xml" />
     <EmbeddedResource Include="Mapping\Order.hbm.xml" />
   </ItemGroup>
   <ItemGroup>

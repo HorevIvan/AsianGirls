@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LearnNHibernate.Domain;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace LearnNHibernate.UnitTests
@@ -15,21 +16,19 @@ namespace LearnNHibernate.UnitTests
         {
             var repository = new Repository();
 
-            var customer = repository.AddCustomer("customer1");
+            var user = repository.AddUser("User Name", UserType.System);
 
             var cost = (Decimal)(100 + DateTime.Now.Second + .50);
 
             var productName = "ProductName";
 
-            var time1 = Repository.GetCurrentDateTime();
+            var order = repository.AddOrder(cost, productName, user);
 
-            var order1 = repository.AddOrder(cost, productName, customer);
+            (order.Number > 0).TEST();
 
-            (order1.Number > 0).TEST();
+            (order.Cost - cost < (Decimal)0.0001).TEST();
 
-            (order1.Cost - cost < (Decimal)0.0001).TEST();
-
-            (order1.ProductName == productName).TEST();
+            (order.ProductName == productName).TEST();
         }
     }
 }

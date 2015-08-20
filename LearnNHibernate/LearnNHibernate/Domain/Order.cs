@@ -8,11 +8,11 @@ namespace LearnNHibernate
 {
     public class Order : Base
     {
-        public virtual Customer Customer { get; set; }
+        public virtual User User { get; set; }
 
-        public virtual decimal Cost { get; set; }
+        public virtual Decimal Cost { get; set; }
 
-        public virtual string ProductName { get; set; }
+        public virtual String ProductName { get; set; }
 
         public virtual DateTime SaleDateAndTime { get; set; }
     }

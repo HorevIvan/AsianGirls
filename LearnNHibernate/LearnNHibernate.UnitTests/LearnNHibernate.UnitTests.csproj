@@ -54,7 +54,7 @@
     <Compile Include="OrderTests.cs" />
     <Compile Include="TestExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="CustomerTests.cs" />
+    <Compile Include="UsersTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

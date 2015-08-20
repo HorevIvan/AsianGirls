@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <hibernate-mapping assembly="LearnNHibernate" namespace="LearnNHibernate" xmlns="urn:nhibernate-mapping-2.2">
-  <class name="Customer" table="Customers" lazy="true" >
+  <class name="User" table="Users" lazy="true" >
     <id name="Number" column="Number">
       <generator class="identity" />
     </id>
     <property name="Name">
       <column name="Name" sql-type="nvarchar" not-null="true" />
     </property>
-    <bag name="Orders">
-      <key column="CustomerNumber" />
-      <one-to-many class="Order" />
-    </bag>
   </class>
 </hibernate-mapping>

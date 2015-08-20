@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using LearnNHibernate.Domain;
 using NHibernate;
 using NHibernate.Cfg;
+using NHibernate.Criterion;
 using NHibernate.Dialect;
 using NHibernate.Driver;
 
@@ -56,8 +57,7 @@ namespace LearnNHibernate
             }
         }
 
-        protected T Save<T>(ISession session, T item)
-            where T : Base
+        protected ItemType Save<ItemType>(ISession session, ItemType item)
         {
             session.Save(item);
 
@@ -65,40 +65,41 @@ namespace LearnNHibernate
         }
 
         protected IEnumerable<T> GetAll<T>()
-            where T : Base
+            where T : class
         {
             return Try(session => session.CreateCriteria<T>().List<T>());
         }
 
-        #region Customer
+        #region User
 
-        public Customer AddCustomer(String name)
+        public User AddUser(String name, UserType type)
         {
-            var customer = new Customer
+            var customer = new User
             {
                 Name = name,
+                //Type = type,
             };
 
             return Try(session => Save(session, customer));
         }
 
-        public IEnumerable<Customer> GetCustomers()
+        public IEnumerable<User> GetUsers()
         {
-            return GetAll<Customer>();
+            return GetAll<User>();
         }
 
         #endregion
 
         #region Order
 
-        public Order AddOrder(Decimal cost, String productName, Customer customer)
+        public Order AddOrder(Decimal cost, String productName, User user)
         {
             var order = new Order
             {
                 Cost = cost,
                 ProductName = productName,
                 SaleDateAndTime = GetCurrentDateTime(),
-                Customer = customer,
+                User = user,
             };
 
             return Try(session => Save(session,  order));
@@ -109,9 +110,51 @@ namespace LearnNHibernate
             return GetAll<Order>();
         }
 
-        public IEnumerable<Order> GetCustomerOrders(Customer customer)
+        public IEnumerable<Order> GetCustomerOrders(User user)
         {
             throw new NotImplementedException();
+        }
+
+        #endregion
+
+        #region UserTypeItem
+
+        protected UserTypeItem AddUserTypeItem(String name)
+        {
+            var userType = new UserTypeItem
+            {
+                Name = name,
+            };
+
+            return Try(session => Save(session, userType));
+        }
+
+        protected UserTypeItem GetOrCreateUserTypeItem(UserType userType)
+        {
+            var name = Enum.GetName(typeof(UserType), userType);
+
+            var userTypeData = GetUserTypeDataByName(name);
+
+            if (userTypeData == null)
+            {
+                userTypeData = AddUserTypeItem(name);
+            }
+
+            return userTypeData;
+        }
+
+        protected UserTypeItem GetUserTypeDataByName(String name)
+        {
+            return Try(session =>
+            {
+                return 
+                    session
+                        .CreateCriteria<UserTypeItem>()
+                        .Add(Restrictions.Eq("Name", name))
+                        .SetMaxResults(1)
+                        .List<UserTypeItem>()
+                        .SingleOrDefault();
+            });
         }
 
         #endregion
