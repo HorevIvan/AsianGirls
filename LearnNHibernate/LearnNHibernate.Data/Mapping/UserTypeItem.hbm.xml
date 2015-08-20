@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="LearnNHibernate" namespace="LearnNHibernate.Service" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="UserTypeItem" table="UserTypes" lazy="true" >
+    <id name="Name" column="Name">
+    </id>
+  </class>
+</hibernate-mapping>

@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using LearnNHibernate.Domain;
+using LearnNHibernate.Service;
 using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Criterion;
@@ -74,13 +75,15 @@ namespace LearnNHibernate
 
         public User AddUser(String name, UserType type)
         {
-            var customer = new User
+            UserTypeCheckExistance(type);
+
+            var user = new User
             {
                 Name = name,
-                //Type = type,
+                Type =  type,
             };
 
-            return Try(session => Save(session, customer));
+            return Try(session => Save(session, user));
         }
 
         public IEnumerable<User> GetUsers()
@@ -129,7 +132,7 @@ namespace LearnNHibernate
             return Try(session => Save(session, userType));
         }
 
-        protected UserTypeItem GetOrCreateUserTypeItem(UserType userType)
+        protected UserTypeItem UserTypeCheckExistance(UserType userType)
         {
             var name = Enum.GetName(typeof(UserType), userType);
 

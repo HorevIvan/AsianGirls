@@ -12,7 +12,7 @@ go
 create table Users
 (
 	Number int identity not null primary key clustered,
-	UserTypeName varchar(32) not null,-- foreign key references UserTypes,
+	UserTypeName varchar(32) not null foreign key references UserTypes,
 	Name nvarchar(128) not null,
 )
 go
