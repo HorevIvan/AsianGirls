@@ -8,11 +8,11 @@ namespace LearnNHibernate
 {
     public class User : Base
     {
-        public virtual String Name { get; set; }
+        public virtual String Name { set; get; }
 
-        protected virtual Int32 UserTypeNumber { get; set; }
+        public virtual Int32 UserTypeNumber { protected set; get; }
 
-        public virtual IEnumerable<Order> Orders { get; set; }
+        public virtual IEnumerable<Order> Orders { set; get; }
 
         public virtual UserType Type
         {
@@ -37,7 +37,7 @@ namespace LearnNHibernate
 
 namespace LearnNHibernate.Service
 {
-    public class UserTypeItem
+    public class UserTypeItem : Base
     {
         public virtual Int32 Number { set; get; }
 

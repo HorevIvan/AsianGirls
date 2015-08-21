@@ -8,12 +8,12 @@ namespace LearnNHibernate
 {
     public class Order : Base
     {
-        public virtual User User { get; set; }
+        public virtual User User { set; get; }
 
-        public virtual Decimal Cost { get; set; }
+        public virtual Int32 Cost { set; get; }
 
-        public virtual String ProductName { get; set; }
+        public virtual String ProductName { set; get; }
 
-        public virtual DateTime SaleDateAndTime { get; set; }
+        public virtual DateTime SaleDateAndTime { set; get; }
     }
 }

@@ -21,7 +21,7 @@ go
 create table Orders
 (
 	Number int identity not null primary key clustered,
-	Cost decimal(10,2) not null,
+	Cost int not null,
 	ProductName nvarchar(1000) not null,
 	SaleDateAndTime datetime2 not null,
 	UserNumber int not null foreign key references Users,

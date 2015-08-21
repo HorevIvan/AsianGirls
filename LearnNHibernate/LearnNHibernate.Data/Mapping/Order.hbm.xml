@@ -5,7 +5,7 @@
       <generator class="identity" />
     </id>
     <property name="Cost">
-      <column name="Cost" sql-type="decimal" not-null="true" />
+      <column name="Cost" sql-type="int" not-null="true" />
     </property>
     <property name="ProductName">
       <column name="ProductName" sql-type="nvarchar" not-null="true" />

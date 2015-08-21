@@ -12,6 +12,7 @@ using NHibernate.Cfg;
 using NHibernate.Criterion;
 using NHibernate.Dialect;
 using NHibernate.Driver;
+using NHibernate.Transform;
 
 namespace LearnNHibernate
 {
@@ -30,6 +31,8 @@ namespace LearnNHibernate
             UserTypes = CheckUserTypes();
         }
 
+        #region Common
+
         protected ISession GetSession(Boolean open = true)
         {
             var sessionFactory = Configuration.BuildSessionFactory();
@@ -37,7 +40,7 @@ namespace LearnNHibernate
             return sessionFactory.OpenSession();
         }
 
-        protected ResultType Try<ResultType>(Func<ISession, ResultType> function)
+        public ResultType Try<ResultType>(Func<ISession, ResultType> function)
         {
             using (var session = GetSession())
             {
@@ -76,6 +79,30 @@ namespace LearnNHibernate
             return Try(session => session.CreateCriteria<T>().List<T>());
         }
 
+        public static DateTime GetCurrentDateTime()
+        {
+            return DateTime.Now;
+        }
+
+        protected Int32 ClearTable<T>()
+            where T : class
+        {
+            var items = GetAll<T>();
+
+            return Try(session =>
+            {
+                foreach (var item in items)
+                {
+                    session.Delete(item);
+                }
+
+                return items.Count();
+            });
+        }
+
+        #endregion
+
+
         #region User
 
         public User AddUser(String name, UserType type)
@@ -98,7 +125,7 @@ namespace LearnNHibernate
 
         #region Order
 
-        public Order AddOrder(Decimal cost, String productName, User user)
+        public Order AddOrder(Int32 cost, String productName, User user)
         {
             var order = new Order
             {
@@ -164,23 +191,29 @@ namespace LearnNHibernate
 
         protected UserTypeItem GetUserTypeItem(UserType userType)
         {
-            return Try(session =>
-            {
-                return 
-                    session
-                        .CreateCriteria<UserTypeItem>()
-                        .Add(Restrictions.Eq("Number", (Int32)userType))
-                        .SetMaxResults(1)
-                        .List<UserTypeItem>()
-                        .SingleOrDefault();
-            });
+            return 
+                Try(session => session
+                    .CreateCriteria<UserTypeItem>()
+                    .Add(Restrictions.Eq("Number", (Int32)userType))
+                    .SetMaxResults(1)
+                    .List<UserTypeItem>()
+                    .SingleOrDefault());
         }
 
         #endregion
 
-        public static DateTime GetCurrentDateTime()
+        #region Queries
+
+        public IEnumerable<Order> GetOrdersByUserType(UserType userType)
         {
-            return DateTime.Now;
+            return 
+                Try(session => session
+                    .QueryOver<Order>()
+                    .JoinQueryOver(o => o.User)
+                    .Where(u => u.UserTypeNumber == (Int32)userType)
+                    .List<Order>());
         }
+
+        #endregion
     }
 }

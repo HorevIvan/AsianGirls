@@ -9,7 +9,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace LearnNHibernate.UnitTests
 {
     [TestClass]
-    public class OrderTests
+    public class OrderTests : BaseTests
     {
         [TestMethod]
         public void AddOrderTest()
@@ -18,7 +18,7 @@ namespace LearnNHibernate.UnitTests
 
             var user = repository.AddUser("User Name", UserType.System);
 
-            var cost = (Decimal)(100 + DateTime.Now.Second + .50);
+            var cost = (10000 + DateTime.Now.Second*100 + 50);
 
             var productName = "ProductName";
 

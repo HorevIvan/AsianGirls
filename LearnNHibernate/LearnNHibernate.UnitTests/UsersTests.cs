@@ -9,7 +9,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace LearnNHibernate.UnitTests
 {
     [TestClass]
-    public class UsersTests
+    public class UsersTests : BaseTests
     {
         [TestMethod]
         public void AddUserTest()
