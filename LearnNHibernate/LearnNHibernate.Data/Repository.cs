@@ -110,8 +110,9 @@ namespace LearnNHibernate
             var user = new User
             {
                 Name = name,
-                Type =  type,
             };
+
+            user.SetUserType(type);
 
             return Try(session => Save(session, user));
         }

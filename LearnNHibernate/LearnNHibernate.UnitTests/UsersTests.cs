@@ -26,7 +26,7 @@ namespace LearnNHibernate.UnitTests
 
             (addedUser.Name == name).TEST();
 
-            (addedUser.Type == type).TEST();
+            (addedUser.GetUserType() == type).TEST();
         }
     }
 }

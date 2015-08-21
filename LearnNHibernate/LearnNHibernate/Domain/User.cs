@@ -14,12 +14,20 @@ namespace LearnNHibernate
 
         public virtual IEnumerable<Order> Orders { set; get; }
 
-        public virtual UserType Type
-        {
-            set { UserTypeNumber = (Int32)value; }
+        #region UserType
 
-            get { return (UserType)UserTypeNumber; }
+        public virtual void SetUserType(UserType userType)
+        {
+            UserTypeNumber = (Int32)userType;
         }
+
+        public virtual UserType GetUserType()
+        {
+            return (UserType)UserTypeNumber;
+        }
+
+        #endregion
+
     }
 
     public enum UserType
