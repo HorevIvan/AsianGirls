@@ -42,7 +42,7 @@
     <Compile Include="Domain\Base.cs" />
     <Compile Include="Domain\User.cs" />
     <Compile Include="Domain\Order.cs" />
-    <Compile Include="ExtensionMethods.cs" />
+    <Compile Include="Tools.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

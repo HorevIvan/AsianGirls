@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -18,11 +19,15 @@ namespace LearnNHibernate
     {
         public Configuration Configuration { private set; get; }
 
+        public ReadOnlyDictionary<UserType, UserTypeItem> UserTypes { private set; get; }
+
         public Repository()
         {
             Configuration = new Configuration();
 
             Configuration.AddAssembly(Assembly.GetExecutingAssembly());
+
+            UserTypes = CheckUserTypes();
         }
 
         protected ISession GetSession(Boolean open = true)
@@ -75,8 +80,6 @@ namespace LearnNHibernate
 
         public User AddUser(String name, UserType type)
         {
-            CheckExistanceUserType(type);
-
             var user = new User
             {
                 Name = name,
@@ -145,6 +148,18 @@ namespace LearnNHibernate
             }
 
             return userTypeData;
+        }
+
+        protected ReadOnlyDictionary<UserType, UserTypeItem> CheckUserTypes()
+        {
+            var userTypes = new Dictionary<UserType, UserTypeItem>();
+
+            foreach (var userType in Tools.GetEnumValues<UserType>())
+            {
+                userTypes[userType] = CheckExistanceUserType(userType);
+            }
+
+            return new ReadOnlyDictionary<UserType, UserTypeItem>(userTypes);
         }
 
         protected UserTypeItem GetUserTypeItem(UserType userType)

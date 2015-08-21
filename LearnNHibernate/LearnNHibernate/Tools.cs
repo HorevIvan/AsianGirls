@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace LearnNHibernate
 {
-    public static class ExtensionMethods
+    public static class Tools
     {
-        public static Boolean Not(this Boolean value)
+        public static IEnumerable<T> GetEnumValues<T>()
         {
-            return !value;
+            return Enum.GetValues(typeof(T)).Cast<T>();
         }
     }
 }
