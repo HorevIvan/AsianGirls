@@ -5,14 +5,15 @@ go
 
 create table UserTypes
 (
-	Name varchar(32) not null primary key clustered,
+	Number int not null primary key clustered,
+	Name varchar(32) not null,
 )
 go
 
 create table Users
 (
 	Number int identity not null primary key clustered,
-	UserTypeName varchar(32) not null foreign key references UserTypes,
+	UserTypeNumber int not null foreign key references UserTypes,
 	Name nvarchar(128) not null,
 )
 go

@@ -10,15 +10,15 @@ namespace LearnNHibernate
     {
         public virtual String Name { get; set; }
 
-        protected virtual String UserTypeName { get; set; }
+        protected virtual Int32 UserTypeNumber { get; set; }
 
         public virtual IEnumerable<Order> Orders { get; set; }
 
         public virtual UserType Type
         {
-            set { UserTypeName = Enum.GetName(typeof(UserType), value); }
+            set { UserTypeNumber = (Int32)value; }
 
-            get { return (UserType)Enum.Parse(typeof(UserType), UserTypeName); }
+            get { return (UserType)UserTypeNumber; }
         }
     }
 
@@ -39,6 +39,8 @@ namespace LearnNHibernate.Service
 {
     public class UserTypeItem
     {
+        public virtual Int32 Number { set; get; }
+
         public virtual String Name { set; get; }
     }
 }

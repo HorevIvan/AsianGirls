@@ -75,7 +75,7 @@ namespace LearnNHibernate
 
         public User AddUser(String name, UserType type)
         {
-            UserTypeCheckExistance(type);
+            CheckExistanceUserType(type);
 
             var user = new User
             {
@@ -122,38 +122,39 @@ namespace LearnNHibernate
 
         #region UserTypeItem
 
-        protected UserTypeItem AddUserTypeItem(String name)
+        protected UserTypeItem AddUserTypeItem(Int32 number, String name)
         {
             var userType = new UserTypeItem
             {
+                Number = number,
                 Name = name,
             };
 
             return Try(session => Save(session, userType));
         }
 
-        protected UserTypeItem UserTypeCheckExistance(UserType userType)
+        protected UserTypeItem CheckExistanceUserType(UserType userType)
         {
-            var name = Enum.GetName(typeof(UserType), userType);
-
-            var userTypeData = GetUserTypeDataByName(name);
+            var userTypeData = GetUserTypeItem(userType);
 
             if (userTypeData == null)
             {
-                userTypeData = AddUserTypeItem(name);
+                var name = Enum.GetName(typeof(UserType), userType);
+
+                userTypeData = AddUserTypeItem((Int32)userType, name);
             }
 
             return userTypeData;
         }
 
-        protected UserTypeItem GetUserTypeDataByName(String name)
+        protected UserTypeItem GetUserTypeItem(UserType userType)
         {
             return Try(session =>
             {
                 return 
                     session
                         .CreateCriteria<UserTypeItem>()
-                        .Add(Restrictions.Eq("Name", name))
+                        .Add(Restrictions.Eq("Number", (Int32)userType))
                         .SetMaxResults(1)
                         .List<UserTypeItem>()
                         .SingleOrDefault();
