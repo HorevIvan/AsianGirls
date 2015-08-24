@@ -16,7 +16,28 @@ namespace ZendeskPrototype
 
             DisplayViews(api);
 
+            SendTestTicket(api);
+
             Console.ReadLine();
+        }
+
+        private static void SendTestTicket(ZendeskApi api)
+        {
+            Console.WriteLine("--Sending ticket-----");
+
+            api.Tickets.CreateTicket(new Ticket()
+            {
+                Subject = "Test ticket from prototype " + DateTime.Now.Ticks,
+
+                Comment = new Comment()
+                {
+                    Body = "HELP ME!!!",
+                },
+
+                Priority = TicketPriorities.Urgent,
+            });
+
+            Console.WriteLine("Done");
         }
 
         private static ZendeskApi GetApi()
