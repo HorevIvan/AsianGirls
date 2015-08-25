@@ -7,6 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZendeskPrototype", "Zendesk
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZendeskApi_v2_Net35", "..\..\ZendeskApi_v2\ZendeskApi_v2_Net35\ZendeskApi_v2_Net35.csproj", "{C1D27B49-4B9D-467D-98E7-3695F35EA400}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EF46ABB7-5580-4F6C-81D3-E6C86A2E44CC}"
+	ProjectSection(SolutionItems) = preProject
+		Links.html = Links.html
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

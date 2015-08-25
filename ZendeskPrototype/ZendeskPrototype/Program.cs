@@ -13,36 +13,61 @@ namespace ZendeskPrototype
 {
     class Program
     {
+        private static readonly String SubjectStart = "Test ticket from prototype";
+
+        private static ZendeskApi_v2.Models.Users.User CurrentUser;
+
         static void Main()
         {
             var api = GetApi();
 
-            DisplayViews(api);
+            //DisplayViews(api);
 
             //SendTestTicket(api);
 
-            //UpdateTickets(api);
+            UpdateTickets(api);
 
             Console.WriteLine("Complete");
 
             Console.ReadLine();
         }
 
-        //private static void UpdateTickets(ZendeskApi api)
-        //{
-        //    var viewID = 59207961; // 
+        private static void UpdateTickets(ZendeskApi api)
+        {
+            var responseTickets = api.Tickets.GetAllTickets();
 
-        //    var tickets = api.Views.ExecuteView(viewID);
+            var pageUrl = responseTickets.NextPage;
 
-        //    foreach (var ticket in 
-        //        tickets
-        //            .Rows
-        //            .Where(row => row.Subject.StartsWith("Test ticket from prototype"))
-        //            .Select(row=>row.ExecutedTicket))
-        //    {
-        //        Console.WriteLine(ticket.Id + "\t" + ticket.Status  + "\t" + ticket.Subject);
-        //    }  
-        //}
+            var pageUrlParts = pageUrl.Split('=');
+
+            pageUrl = pageUrlParts[0] + "=" + (Int32.Parse(pageUrlParts[1]) - 1);
+
+            while (!String.IsNullOrEmpty(pageUrl))
+            {
+                Console.WriteLine("Scaning page: {0}", pageUrl);
+
+                responseTickets = api.Tickets.GetByPageUrl<GroupTicketResponse>(pageUrl);
+
+                var tickets = responseTickets.Tickets.Where(row => row.Subject.StartsWith(SubjectStart));
+
+                foreach (var ticket in tickets)
+                {
+                    var comment = new Comment
+                    {
+                        AuthorId = CurrentUser.Id,
+                        Body = String.Format("Updated from: {0:yyyy.MM.dd HH:mm:ss.fffff}",DateTime.Now),
+                    };
+
+                    var response = api.Tickets.UpdateTicket(ticket, comment);
+
+                    var updatedTicket = response.Ticket;
+
+                    Console.WriteLine("Updated: {0}\t{1}\t{2}", updatedTicket.Id, updatedTicket.Status, updatedTicket.Subject);
+                }
+
+                pageUrl = responseTickets.NextPage;
+            }
+        }
 
         private static void SendTestTicket(ZendeskApi api)
         {
@@ -50,7 +75,7 @@ namespace ZendeskPrototype
 
             var ticket = new Ticket()
             {
-                Subject = "Test ticket from prototype " + DateTime.Now.Ticks,
+                Subject = SubjectStart + DateTime.Now.Ticks,
 
                 Comment = new Comment()
                 {
@@ -147,9 +172,9 @@ namespace ZendeskPrototype
             {
                 Console.WriteLine("Connecting...");
 
-                var currentUser = api.Users.GetCurrentUser().User;
+                CurrentUser = api.Users.GetCurrentUser().User;
 
-                Console.WriteLine("Hello " + currentUser.Name);
+                Console.WriteLine("Hello {0}", CurrentUser.Name);
 
                 if (useSettings)
                 {
