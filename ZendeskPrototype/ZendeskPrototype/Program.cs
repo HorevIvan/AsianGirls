@@ -13,7 +13,7 @@ namespace ZendeskPrototype
 {
     class Program
     {
-        private static readonly String SubjectStart = "Test ticket from prototype";
+        private static readonly String SubjectStart = "Test ticket from prototype ";
 
         private static ZendeskApi_v2.Models.Users.User CurrentUser;
 
@@ -21,9 +21,9 @@ namespace ZendeskPrototype
         {
             var api = GetApi();
 
-            //DisplayViews(api);
+            DisplayViews(api);
 
-            //SendTestTicket(api);
+            SendTestTicket(api);
 
             UpdateTickets(api);
 
@@ -34,6 +34,8 @@ namespace ZendeskPrototype
 
         private static void UpdateTickets(ZendeskApi api)
         {
+            Console.WriteLine("Search created tickets");
+
             var responseTickets = api.Tickets.GetAllTickets();
 
             var pageUrl = responseTickets.NextPage;
@@ -58,11 +60,16 @@ namespace ZendeskPrototype
                         Body = String.Format("Updated from: {0:yyyy.MM.dd HH:mm:ss.fffff}",DateTime.Now),
                     };
 
+                    ticket.Priority =
+                        ticket.Priority == TicketPriorities.Urgent
+                            ? TicketPriorities.Low
+                            : TicketPriorities.Urgent;
+
                     var response = api.Tickets.UpdateTicket(ticket, comment);
 
                     var updatedTicket = response.Ticket;
 
-                    Console.WriteLine("Updated: {0}\t{1}\t{2}", updatedTicket.Id, updatedTicket.Status, updatedTicket.Subject);
+                    Console.WriteLine("Updated: {0}\t{1}\t{2}\t{3}", updatedTicket.Id, updatedTicket.Status, updatedTicket.Recipient, updatedTicket.Subject);
                 }
 
                 pageUrl = responseTickets.NextPage;
@@ -71,7 +78,7 @@ namespace ZendeskPrototype
 
         private static void SendTestTicket(ZendeskApi api)
         {
-            Console.WriteLine("Tickets:");
+            Console.WriteLine("Create ticket");
 
             var ticket = new Ticket()
             {
@@ -176,7 +183,7 @@ namespace ZendeskPrototype
 
                 Console.WriteLine("Hello {0}", CurrentUser.Name);
 
-                if (useSettings)
+                //if (useSettings)
                 {
                     // save to C:\Users\<UserName>\AppData\Local\ZendeskPrototype\
                     settings.Save();
