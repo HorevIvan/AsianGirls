@@ -66,7 +66,7 @@ namespace ZendeskPrototype
                             : TicketPriorities.Urgent;
 
                     var response = api.Tickets.UpdateTicket(ticket, comment);
-
+                    
                     var updatedTicket = response.Ticket;
 
                     Console.WriteLine("Updated: {0}\t{1}\t{2}\t{3}", updatedTicket.Id, updatedTicket.Status, updatedTicket.Recipient, updatedTicket.Subject);
@@ -83,6 +83,9 @@ namespace ZendeskPrototype
             var ticket = new Ticket()
             {
                 Subject = SubjectStart + DateTime.Now.Ticks,
+
+                //Subject = "Request of order #"+DateTime.Now.Second,
+                //Tags = new List<String>(new[] { "Request_of_order" }),
 
                 Comment = new Comment()
                 {
