@@ -4,7 +4,7 @@ namespace Writers.Tickets
 {
     public interface ITicket<TID>
     {
-        TID ID { get; }
+        TID Identifier { get; }
 
         String Subject { get; }
 

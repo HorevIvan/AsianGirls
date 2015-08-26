@@ -1,15 +1,16 @@
 ﻿using System;
+using TID = System.Nullable<System.Int64>;
 
 namespace Writers.Tickets.Zendesk
 {
-    public class ZendeskRepository : ITicketsRepository<Int32>
+    public class ZendeskRepository : ITicketsRepository<TID>
     {
-        public Int32 Create(ITicket<Int32> ticket)
+        public TID Create(ITicket<TID> ticket)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(ITicket<Int32> ticket)
+        public void Update(ITicket<TID> ticket)
         {
             throw new NotImplementedException();
         }
