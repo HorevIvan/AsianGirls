@@ -11,5 +11,7 @@ namespace Writers.Tickets
         String Body { get; }
 
         String[] Tags { get; }
+
+        String Priority { get; }
     }
 }
