@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Writers.Tickets
 {
-    public interface IRepository<TID>
+    public interface ITicketsRepository<TID>
     {
         TID Create(ITicket<TID> ticket);
 

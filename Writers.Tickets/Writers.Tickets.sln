@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Writers.Tickets", "Writers.Tickets\Writers.Tickets.csproj", "{46B32D59-5308-4A5E-820A-87857C0A3D32}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Writers.Tickets.Zendesk", "Writers.Tickets.Zendesk\Writers.Tickets.Zendesk.csproj", "{CE7F629C-1E8D-41BA-84B4-E8835901B32D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{46B32D59-5308-4A5E-820A-87857C0A3D32}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{46B32D59-5308-4A5E-820A-87857C0A3D32}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{46B32D59-5308-4A5E-820A-87857C0A3D32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE7F629C-1E8D-41BA-84B4-E8835901B32D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE7F629C-1E8D-41BA-84B4-E8835901B32D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE7F629C-1E8D-41BA-84B4-E8835901B32D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE7F629C-1E8D-41BA-84B4-E8835901B32D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

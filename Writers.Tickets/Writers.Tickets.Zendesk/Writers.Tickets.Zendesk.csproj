@@ -4,14 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{46B32D59-5308-4A5E-820A-87857C0A3D32}</ProjectGuid>
+    <ProjectGuid>{CE7F629C-1E8D-41BA-84B4-E8835901B32D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Writers.Tickets</RootNamespace>
-    <AssemblyName>Writers.Tickets</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <RootNamespace>Writers.Tickets.Zendesk</RootNamespace>
+    <AssemblyName>Writers.Tickets.Zendesk</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -40,9 +39,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ITicketsRepository.cs" />
-    <Compile Include="ITicket.cs" />
+    <Compile Include="ZendeskRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Writers.Tickets\Writers.Tickets.csproj">
+      <Project>{46b32d59-5308-4a5e-820a-87857c0a3d32}</Project>
+      <Name>Writers.Tickets</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
