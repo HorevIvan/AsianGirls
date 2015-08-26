@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Linq;
-using TID = System.Nullable<System.Int64>;
+using TIdentifier = System.Nullable<System.Int64>;
 using ZTicket = ZendeskApi_v2.Models.Tickets.Ticket;
 
 namespace Writers.Tickets.Zendesk
 {
-    public class ZendeskTicket : ITicket<TID>
+    public class ZendeskTicket : ITicket<TIdentifier>
     {
         public ZTicket BaseTicket { private set; get; }
 
@@ -14,7 +14,7 @@ namespace Writers.Tickets.Zendesk
             BaseTicket = baseTicket;
         }
 
-        public TID Identifier
+        public TIdentifier Identifier
         {
             private set { BaseTicket.Id = value; }
 

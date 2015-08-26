@@ -1,18 +1,18 @@
 ﻿using System;
-using TID = System.Nullable<System.Int64>;
+using TIdentifier = System.Nullable<System.Int64>;
 
 namespace Writers.Tickets.Zendesk
 {
-    public class ZendeskRepository : ITicketsRepository<TID>
+    public class ZendeskRepository : ITicketsRepository<TIdentifier>
     {
         public ITicketDestination TicketDestination { get; private set; }
 
-        public TID Create(ITicket<TID> ticket)
+        public TIdentifier Create(ITicket<TIdentifier> ticket)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(ITicket<TID> ticket)
+        public void Update(ITicket<TIdentifier> ticket)
         {
             throw new NotImplementedException();
         }
