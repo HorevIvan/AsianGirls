@@ -52,7 +52,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IZendeskRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ZendeskRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
