@@ -10,6 +10,25 @@ namespace Writers.Tickets.Zendesk.Sample
     {
         private static void Main()
         {
+            var url = Console.ReadLine();
+            var login = Console.ReadLine();
+            var password = Console.ReadLine();
+
+            var repository = new ZendeskRepository(new ZendeskProject(url, login, password));
+
+            Console.WriteLine("Connection: {0}", repository.ZendeskProject.CheckConnection());
+
+            var ticket = new ZendeskTicket
+            {
+                Subject = "Automatically created ticket " + DateTime.Now,
+                Body = "This ticket was created by robot",
+                Tags = new[] { "Unique_key_of_ticket" },
+                Priority = ZendeskTicketPriorities.Normal,
+            };
+
+            Console.WriteLine("Created: {0}", repository.Create(ticket));
+
+            Console.ReadLine();
         }
     }
 }
