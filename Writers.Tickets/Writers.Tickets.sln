@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Writers.Tickets", "Writers.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Writers.Tickets.Zendesk", "Writers.Tickets.Zendesk\Writers.Tickets.Zendesk.csproj", "{CE7F629C-1E8D-41BA-84B4-E8835901B32D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Writers.Tickets.Zendesk.Sample", "Writers.Tickets.Zendesk.Sample\Writers.Tickets.Zendesk.Sample.csproj", "{36BE8D8E-B1B4-4F6F-B5A5-E9084FC2214C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{CE7F629C-1E8D-41BA-84B4-E8835901B32D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE7F629C-1E8D-41BA-84B4-E8835901B32D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE7F629C-1E8D-41BA-84B4-E8835901B32D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36BE8D8E-B1B4-4F6F-B5A5-E9084FC2214C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36BE8D8E-B1B4-4F6F-B5A5-E9084FC2214C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36BE8D8E-B1B4-4F6F-B5A5-E9084FC2214C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36BE8D8E-B1B4-4F6F-B5A5-E9084FC2214C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
