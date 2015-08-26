@@ -5,7 +5,17 @@ namespace Writers.Tickets.Zendesk
 {
     public class ZendeskRepository : ITicketsRepository<TIdentifier>
     {
-        public ITicketDestination TicketDestination { get; private set; }
+        public ZendeskProject ZendeskProject { private set; get; }
+
+        public ZendeskRepository(ZendeskProject zendeskProject)
+        {
+            ZendeskProject = zendeskProject;
+        }
+
+        public ITicketDestination TicketDestination
+        {
+            get { return ZendeskProject; }
+        }
 
         public TIdentifier Create(ITicket<TIdentifier> ticket)
         {
