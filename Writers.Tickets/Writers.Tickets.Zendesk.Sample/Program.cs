@@ -25,13 +25,9 @@ namespace Writers.Tickets.Zendesk.Sample
 
         private static void Main()
         {
-            var url = Console.ReadLine();
-            var login = Console.ReadLine();
-            var password = Console.ReadLine();
+            var repository = DependencyInjection.Resolve<ITicketsRepository>();
 
-            var repository = new ZendeskRepository(new ZendeskProject(url, login, password));
-
-            Console.WriteLine("Connection: {0}", repository.ZendeskProject.CheckConnection());
+            Console.WriteLine("Connection: {0}", repository.TicketDestination.CheckConnection());
 
             var ticket = new ZendeskTicket
             {
@@ -42,6 +38,8 @@ namespace Writers.Tickets.Zendesk.Sample
             };
 
             Console.WriteLine("Created: {0}", repository.Create(ticket));
+
+            Console.WriteLine("Program is terminated");
 
             Console.ReadLine();
 
