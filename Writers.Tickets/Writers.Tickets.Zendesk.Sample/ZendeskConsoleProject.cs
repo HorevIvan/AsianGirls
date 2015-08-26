@@ -15,14 +15,14 @@ namespace Writers.Tickets.Zendesk.Sample
 
         private static string GetUserPassword()
         {
-            Console.WriteLine("Enter a Zendesk project user e-mail");
+            Console.WriteLine("Enter a Zendesk project user password");
 
             return Console.ReadLine();
         }
 
         private static string GetUserEMail()
         {
-            Console.WriteLine("Enter a Zendesk project user password");
+            Console.WriteLine("Enter a Zendesk project user e-mail");
 
             return Console.ReadLine();
         }

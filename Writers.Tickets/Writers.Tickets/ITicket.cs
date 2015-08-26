@@ -4,14 +4,14 @@ namespace Writers.Tickets
 {
     public interface ITicket
     {
-        String Identifier { get; }
+        String Identifier { set; get; }
 
-        String Subject { get; }
+        String Subject { set; get; }
 
-        String Body { get; }
+        String Body { set; get; }
 
-        String[] Tags { get; }
+        String[] Tags { set; get; }
 
-        String Priority { get; }
+        String Priority { set; get; }
     }
 }

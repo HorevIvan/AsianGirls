@@ -29,13 +29,11 @@ namespace Writers.Tickets.Zendesk.Sample
 
             Console.WriteLine("Connection: {0}", repository.TicketDestination.CheckConnection());
 
-            var ticket = new ZendeskTicket
-            {
-                Subject = "Automatically created ticket " + DateTime.Now,
-                Body = "This ticket was created by robot",
-                Tags = new[] { "Unique_key_of_ticket" },
-                Priority = ZendeskTicketPriorities.Normal,
-            };
+            var ticket = DependencyInjection.Resolve<ITicket>();
+            ticket.Subject = "Automatically created ticket " + DateTime.Now;
+            ticket.Body = "This ticket was created by robot";
+            ticket.Tags = new[] { "Unique_key_of_ticket" };
+            ticket.Priority = ZendeskTicketPriorities.Normal;
 
             Console.WriteLine("Created: {0}", repository.Create(ticket));
 
