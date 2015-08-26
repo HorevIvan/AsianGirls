@@ -5,6 +5,8 @@ namespace Writers.Tickets.Zendesk
 {
     public class ZendeskRepository : ITicketsRepository<TID>
     {
+        public ITicketDestination TicketDestination { get; private set; }
+
         public TID Create(ITicket<TID> ticket)
         {
             throw new NotImplementedException();
