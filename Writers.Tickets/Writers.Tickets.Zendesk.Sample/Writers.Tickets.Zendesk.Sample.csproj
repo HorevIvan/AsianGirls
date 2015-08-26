@@ -50,6 +50,8 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ZendeskConsoleProject.cs" />
+    <Compile Include="ZendeskConsoleRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Writers.Tickets.Zendesk\Writers.Tickets.Zendesk.csproj">

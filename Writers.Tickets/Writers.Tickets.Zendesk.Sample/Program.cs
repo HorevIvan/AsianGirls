@@ -1,4 +1,5 @@
-﻿using Castle.Windsor;
+﻿using Castle.MicroKernel.Registration;
+using Castle.Windsor;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,14 +8,23 @@ using System.Threading.Tasks;
 
 namespace Writers.Tickets.Zendesk.Sample
 {
-    static class Program
+    public static class Program
     {
+        public static readonly IWindsorContainer DependencyInjection;
+
+        static Program()
+        {
+            DependencyInjection = new WindsorContainer();
+
+            DependencyInjection.Register(Component.For<ITicketsRepository>().ImplementedBy<ZendeskConsoleRepository>());
+
+            DependencyInjection.Register(Component.For<ITicket>().ImplementedBy<ZendeskTicket>());
+
+            DependencyInjection.Register(Component.For<ITicketDestination>().ImplementedBy<ZendeskConsoleProject>());
+        }
+
         private static void Main()
         {
-            var container = new WindsorContainer();
-
-            //container.Register(Component.For<ITicketsRepository<>>)
-
             var url = Console.ReadLine();
             var login = Console.ReadLine();
             var password = Console.ReadLine();
@@ -34,6 +44,8 @@ namespace Writers.Tickets.Zendesk.Sample
             Console.WriteLine("Created: {0}", repository.Create(ticket));
 
             Console.ReadLine();
+
+            DependencyInjection.Dispose();
         }
     }
 }
