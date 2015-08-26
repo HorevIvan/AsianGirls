@@ -2,9 +2,9 @@
 
 namespace Writers.Tickets
 {
-    public interface ITicket<TIdentifier>
+    public interface ITicket
     {
-        TIdentifier Identifier { get; }
+        String Identifier { get; }
 
         String Subject { get; }
 

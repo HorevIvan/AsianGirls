@@ -1,11 +1,10 @@
 ﻿using System;
 using ZendeskApi_v2.Models.Constants;
 using ZendeskApi_v2.Models.Tickets;
-using TIdentifier = System.Nullable<System.Int64>;
 
 namespace Writers.Tickets.Zendesk
 {
-    public class ZendeskRepository : ITicketsRepository<TIdentifier>
+    public class ZendeskRepository : ITicketsRepository
     {
         public ZendeskProject ZendeskProject { private set; get; }
 
@@ -19,7 +18,7 @@ namespace Writers.Tickets.Zendesk
             get { return ZendeskProject; }
         }
 
-        public TIdentifier Create(ITicket<TIdentifier> ticket)
+        public String Create(ITicket ticket)
         {
             var api = ZendeskProject.GetApi();
 
@@ -27,10 +26,10 @@ namespace Writers.Tickets.Zendesk
 
             var ticketResponse = api.Tickets.CreateTicket(jsonTicket);
 
-            return ticketResponse.Ticket.Id;
+            return ticketResponse.Ticket.Id.ToString();
         }
 
-        public void Update(ITicket<TIdentifier> ticket)
+        public void Update(ITicket ticket)
         {
             var api = ZendeskProject.GetApi();
 

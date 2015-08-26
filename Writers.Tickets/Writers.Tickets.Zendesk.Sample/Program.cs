@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Castle.Windsor;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,10 @@ namespace Writers.Tickets.Zendesk.Sample
     {
         private static void Main()
         {
+            var container = new WindsorContainer();
+
+            //container.Register(Component.For<ITicketsRepository<>>)
+
             var url = Console.ReadLine();
             var login = Console.ReadLine();
             var password = Console.ReadLine();

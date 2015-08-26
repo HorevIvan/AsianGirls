@@ -2,12 +2,12 @@
 
 namespace Writers.Tickets
 {
-    public interface ITicketsRepository<TIdentifier>
+    public interface ITicketsRepository
     {
         ITicketDestination TicketDestination { get; }
 
-        TIdentifier Create(ITicket<TIdentifier> ticket);
+        String Create(ITicket ticket);
 
-        void Update(ITicket<TIdentifier> ticket);
+        void Update(ITicket ticket);
     }
 }

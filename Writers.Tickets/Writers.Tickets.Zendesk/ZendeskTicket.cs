@@ -4,9 +4,9 @@ using ZendeskApi_v2.Models.Tickets;
 
 namespace Writers.Tickets.Zendesk
 {
-    public class ZendeskTicket : ITicket<Int64?>
+    public class ZendeskTicket : ITicket
     {
-        public Int64? Identifier { set; get; }
+        public String Identifier { set; get; }
 
         public String Subject { set; get; }
 
