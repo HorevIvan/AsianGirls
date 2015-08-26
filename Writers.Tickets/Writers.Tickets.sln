@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zendesk", "Zendesk\Zendesk.csproj", "{BD8614C8-DE74-401E-8B4A-9F443FBF8448}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Writers.Tickets", "Writers.Tickets\Writers.Tickets.csproj", "{46B32D59-5308-4A5E-820A-87857C0A3D32}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{BD8614C8-DE74-401E-8B4A-9F443FBF8448}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BD8614C8-DE74-401E-8B4A-9F443FBF8448}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BD8614C8-DE74-401E-8B4A-9F443FBF8448}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BD8614C8-DE74-401E-8B4A-9F443FBF8448}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46B32D59-5308-4A5E-820A-87857C0A3D32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46B32D59-5308-4A5E-820A-87857C0A3D32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46B32D59-5308-4A5E-820A-87857C0A3D32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46B32D59-5308-4A5E-820A-87857C0A3D32}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
