@@ -2,9 +2,9 @@
 
 namespace Writers.Tickets
 {
-    public interface ITicketsService
+    public interface IHelpdeskService
     {
-        ITicketDestination TicketDestination { get; }
+        IHelpdeskConnection TicketDestination { get; }
 
         Int64 CreateTicket(String subject, String message, String priority, String tag);
 

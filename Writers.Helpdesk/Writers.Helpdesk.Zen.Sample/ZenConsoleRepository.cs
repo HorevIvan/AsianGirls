@@ -5,11 +5,11 @@ using System.Text;
 
 namespace Writers.Tickets.Zendesk.Sample
 {
-    public class ZendeskConsoleRepository : ZendeskService
+    public class ZenConsoleRepository : ZenService
     {
-        public ZendeskConsoleRepository()
+        public ZenConsoleRepository()
             //
-            : base(new ZendeskConsoleProject())
+            : base(new ZenConsoleProject())
         { 
         }
     }

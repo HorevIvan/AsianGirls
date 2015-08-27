@@ -16,27 +16,27 @@ namespace Writers.Tickets.Zendesk.Sample
         {
             DependencyInjection = new WindsorContainer();
 
-            DependencyInjection.Register(Component.For<ITicketsService>().ImplementedBy<ZendeskConsoleRepository>());
+            DependencyInjection.Register(Component.For<IHelpdeskService>().ImplementedBy<ZenConsoleRepository>());
 
-            DependencyInjection.Register(Component.For<ITicketDestination>().ImplementedBy<ZendeskConsoleProject>());
+            DependencyInjection.Register(Component.For<IHelpdeskConnection>().ImplementedBy<ZenConsoleProject>());
         }
 
         private static void Main()
         {
-            var repository = DependencyInjection.Resolve<ITicketsService>();
+            var repository = DependencyInjection.Resolve<IHelpdeskService>();
 
             Console.WriteLine("Connection: {0}", repository.TicketDestination.CheckConnection());
 
             var subject = "Automatically created ticket " + DateTime.Now;
             var body = "This ticket was created by robot";
             var tag = "Unique_key_of_ticket";
-            var priority = ZendeskTicketPriorities.Normal;
+            var priority = ZenTicketPriorities.Normal;
 
             var identifier = repository.CreateTicket(subject, body, priority, tag);
 
             Console.WriteLine("Created: {0}", identifier);
 
-            repository.UpdateTicketPriority(identifier, ZendeskTicketPriorities.Low);
+            repository.UpdateTicketPriority(identifier, ZenTicketPriorities.Low);
 
             Console.WriteLine("Updated: {0}", identifier);
 

@@ -2,7 +2,7 @@
 
 namespace Writers.Tickets
 {
-    public interface ITicketDestination
+    public interface IHelpdeskConnection
     {
         Boolean CheckConnection();
     }

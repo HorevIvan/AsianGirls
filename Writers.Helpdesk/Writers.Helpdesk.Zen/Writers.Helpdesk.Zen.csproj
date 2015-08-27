@@ -46,9 +46,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ZendeskPriorities.cs" />
-    <Compile Include="ZendeskProject.cs" />
-    <Compile Include="ZendeskService.cs" />
+    <Compile Include="ZenTicketPriorities.cs" />
+    <Compile Include="ZenProject.cs" />
+    <Compile Include="ZenService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

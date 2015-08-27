@@ -8,13 +8,13 @@ using ZendeskApi_v2;
 
 namespace Writers.Tickets.Zendesk
 {
-    public class ZendeskProject : ITicketDestination
+    public class ZenProject : IHelpdeskConnection
     {
         public String Url { private set; get; }
 
         public String UserEMail { private set; get; }
 
-        public ZendeskProject(String url, String userEMail, String userPassword)
+        public ZenProject(String url, String userEMail, String userPassword)
         {
             Url = url;
 

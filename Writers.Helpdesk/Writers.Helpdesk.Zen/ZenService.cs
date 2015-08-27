@@ -4,16 +4,16 @@ using ZendeskApi_v2.Models.Tickets;
 
 namespace Writers.Tickets.Zendesk
 {
-    public class ZendeskService : ITicketsService
+    public class ZenService : IHelpdeskService
     {
-        public ZendeskProject ZendeskProject { private set; get; }
+        public ZenProject ZendeskProject { private set; get; }
 
-        public ZendeskService(ZendeskProject zendeskProject)
+        public ZenService(ZenProject zendeskProject)
         {
             ZendeskProject = zendeskProject;
         }
 
-        public ITicketDestination TicketDestination
+        public IHelpdeskConnection TicketDestination
         {
             get { return ZendeskProject; }
         }

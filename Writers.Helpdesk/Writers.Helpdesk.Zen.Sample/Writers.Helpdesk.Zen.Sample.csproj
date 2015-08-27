@@ -50,8 +50,8 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ZendeskConsoleProject.cs" />
-    <Compile Include="ZendeskConsoleRepository.cs" />
+    <Compile Include="ZenConsoleProject.cs" />
+    <Compile Include="ZenConsoleRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Writers.Helpdesk.Zen\Writers.Helpdesk.Zen.csproj">

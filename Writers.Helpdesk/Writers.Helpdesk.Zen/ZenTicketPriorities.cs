@@ -6,7 +6,7 @@ using ZendeskApi_v2.Models.Constants;
 
 namespace Writers.Tickets.Zendesk
 {
-    public static class ZendeskTicketPriorities
+    public static class ZenTicketPriorities
     {
         public static String Low { get { return TicketPriorities.Low; } }
 

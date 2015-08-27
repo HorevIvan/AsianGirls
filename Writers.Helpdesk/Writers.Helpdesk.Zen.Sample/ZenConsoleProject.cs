@@ -5,9 +5,9 @@ using System.Text;
 
 namespace Writers.Tickets.Zendesk.Sample
 {
-    public class ZendeskConsoleProject : ZendeskProject
+    public class ZenConsoleProject : ZenProject
     {
-        public ZendeskConsoleProject()
+        public ZenConsoleProject()
             //
             : base(GetUrl(), GetUserEMail(), GetUserPassword())
         {
