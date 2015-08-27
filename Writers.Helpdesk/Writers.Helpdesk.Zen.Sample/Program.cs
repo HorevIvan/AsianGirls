@@ -38,7 +38,7 @@ namespace Writers.Tickets.Zendesk.Sample
 
             repository.UpdateTicketPriority(identifier, ZenTicket.Priority.Low);
 
-            Console.WriteLine("Updated: {0}", identifier);
+            Console.WriteLine("Priority updated: {0}", identifier);
 
             Console.WriteLine("Program is terminated");
 
