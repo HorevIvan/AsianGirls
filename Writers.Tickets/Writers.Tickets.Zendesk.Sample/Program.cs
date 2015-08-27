@@ -18,8 +18,6 @@ namespace Writers.Tickets.Zendesk.Sample
 
             DependencyInjection.Register(Component.For<ITicketsRepository>().ImplementedBy<ZendeskConsoleRepository>());
 
-            DependencyInjection.Register(Component.For<ITicket>().ImplementedBy<ZendeskTicket>());
-
             DependencyInjection.Register(Component.For<ITicketDestination>().ImplementedBy<ZendeskConsoleProject>());
         }
 
@@ -29,13 +27,18 @@ namespace Writers.Tickets.Zendesk.Sample
 
             Console.WriteLine("Connection: {0}", repository.TicketDestination.CheckConnection());
 
-            var ticket = DependencyInjection.Resolve<ITicket>();
-            ticket.Subject = "Automatically created ticket " + DateTime.Now;
-            ticket.Body = "This ticket was created by robot";
-            ticket.Tags = new[] { "Unique_key_of_ticket" };
-            ticket.Priority = ZendeskTicketPriorities.Normal;
+            var subject = "Automatically created ticket " + DateTime.Now;
+            var body = "This ticket was created by robot";
+            var tag = "Unique_key_of_ticket";
+            var priority = ZendeskTicketPriorities.Normal;
 
-            Console.WriteLine("Created: {0}", repository.Create(ticket));
+            var identifier = repository.CreateTicket(subject, body, priority, tag);
+
+            Console.WriteLine("Created: {0}", identifier);
+
+            repository.UpdateTicketPriority(identifier, ZendeskTicketPriorities.Low);
+
+            Console.WriteLine("Updated: {0}", identifier);
 
             Console.WriteLine("Program is terminated");
 

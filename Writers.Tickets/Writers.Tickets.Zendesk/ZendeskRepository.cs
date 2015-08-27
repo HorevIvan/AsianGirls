@@ -18,24 +18,34 @@ namespace Writers.Tickets.Zendesk
             get { return ZendeskProject; }
         }
 
-        public String Create(ITicket ticket)
+        public Int64 CreateTicket(String subject, String message, String priority, String tag)
         {
             var api = ZendeskProject.GetApi();
 
-            var jsonTicket = ticket.ToJsonTicket();
+            var ticket = new Ticket
+            {
+                Subject = subject,
+                Comment = new Comment { Body = message },
+                Priority = priority,
+                Tags = new[] { tag },
+            };
 
-            var ticketResponse = api.Tickets.CreateTicket(jsonTicket);
+            var ticketResponse = api.Tickets.CreateTicket(ticket);
 
-            return ticketResponse.Ticket.Id.ToString();
+            return ticketResponse.Ticket.Id.Value;
         }
 
-        public void Update(ITicket ticket)
+        public void UpdateTicketPriority(Int64 identifier, String priority)
         {
             var api = ZendeskProject.GetApi();
 
-            var jsonTicket = ticket.ToJsonTicket();
+            var ticket = new Ticket
+            {
+                Id = identifier,
+                Priority = priority,
+            };
 
-            var ticketResponse = api.Tickets.UpdateTicket(jsonTicket);
+            var ticketResponse = api.Tickets.UpdateTicket(ticket);
         }
     }
 }

@@ -6,8 +6,8 @@ namespace Writers.Tickets
     {
         ITicketDestination TicketDestination { get; }
 
-        String Create(ITicket ticket);
+        Int64 CreateTicket(String subject, String message, String priority, String tag);
 
-        void Update(ITicket ticket);
+        void UpdateTicketPriority(Int64 identifier, String priority);
     }
 }

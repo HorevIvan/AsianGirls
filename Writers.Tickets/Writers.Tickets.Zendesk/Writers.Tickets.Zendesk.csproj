@@ -46,12 +46,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ZendeskHelpers.cs" />
     <Compile Include="ZendeskPriorities.cs" />
     <Compile Include="ZendeskProject.cs" />
     <Compile Include="ZendeskRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ZendeskTicket.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Writers.Tickets\Writers.Tickets.csproj">
