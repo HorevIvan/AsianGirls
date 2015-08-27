@@ -16,14 +16,14 @@ namespace Writers.Tickets.Zendesk.Sample
         {
             DependencyInjection = new WindsorContainer();
 
-            DependencyInjection.Register(Component.For<ITicketsRepository>().ImplementedBy<ZendeskConsoleRepository>());
+            DependencyInjection.Register(Component.For<ITicketsService>().ImplementedBy<ZendeskConsoleRepository>());
 
             DependencyInjection.Register(Component.For<ITicketDestination>().ImplementedBy<ZendeskConsoleProject>());
         }
 
         private static void Main()
         {
-            var repository = DependencyInjection.Resolve<ITicketsRepository>();
+            var repository = DependencyInjection.Resolve<ITicketsService>();
 
             Console.WriteLine("Connection: {0}", repository.TicketDestination.CheckConnection());
 

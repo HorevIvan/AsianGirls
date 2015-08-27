@@ -2,7 +2,7 @@
 
 namespace Writers.Tickets
 {
-    public interface ITicketsRepository
+    public interface ITicketsService
     {
         ITicketDestination TicketDestination { get; }
 

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Writers.Tickets.Zendesk.Sample
 {
-    public class ZendeskConsoleRepository : ZendeskRepository
+    public class ZendeskConsoleRepository : ZendeskService
     {
         public ZendeskConsoleRepository()
             //
