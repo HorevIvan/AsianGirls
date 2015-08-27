@@ -5,9 +5,9 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Writers.Helpdesk", "Writers.Helpdesk\Writers.Helpdesk.csproj", "{46B32D59-5308-4A5E-820A-87857C0A3D32}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Writers.Helpdesk.Zendesk", "Writers.Helpdesk.Zendesk\Writers.Helpdesk.Zendesk.csproj", "{CE7F629C-1E8D-41BA-84B4-E8835901B32D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Writers.Helpdesk.Zen", "Writers.Helpdesk.Zen\Writers.Helpdesk.Zen.csproj", "{CE7F629C-1E8D-41BA-84B4-E8835901B32D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Writers.Helpdesk.Zendesk.Sample", "Writers.Helpdesk.Zendesk.Sample\Writers.Helpdesk.Zendesk.Sample.csproj", "{36BE8D8E-B1B4-4F6F-B5A5-E9084FC2214C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Writers.Helpdesk.Zen.Sample", "Writers.Helpdesk.Zen.Sample\Writers.Helpdesk.Zen.Sample.csproj", "{36BE8D8E-B1B4-4F6F-B5A5-E9084FC2214C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

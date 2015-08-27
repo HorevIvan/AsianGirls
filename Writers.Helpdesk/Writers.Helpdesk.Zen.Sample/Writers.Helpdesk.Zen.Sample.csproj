@@ -54,7 +54,7 @@
     <Compile Include="ZendeskConsoleRepository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Writers.Helpdesk.Zendesk\Writers.Helpdesk.Zendesk.csproj">
+    <ProjectReference Include="..\Writers.Helpdesk.Zen\Writers.Helpdesk.Zen.csproj">
       <Project>{ce7f629c-1e8d-41ba-84b4-e8835901b32d}</Project>
       <Name>Writers.Tickets.Zendesk</Name>
     </ProjectReference>
