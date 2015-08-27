@@ -30,13 +30,13 @@ namespace Writers.Tickets.Zendesk.Sample
             var subject = "Automatically created ticket " + DateTime.Now;
             var body = "This ticket was created by robot";
             var tag = "Unique_key_of_ticket";
-            var priority = ZenTicketPriorities.Normal;
+            var priority = ZenTicket.Priority.Normal;
 
             var identifier = repository.CreateTicket(subject, body, priority, tag);
 
             Console.WriteLine("Created: {0}", identifier);
 
-            repository.UpdateTicketPriority(identifier, ZenTicketPriorities.Low);
+            repository.UpdateTicketPriority(identifier, ZenTicket.Priority.Low);
 
             Console.WriteLine("Updated: {0}", identifier);
 
