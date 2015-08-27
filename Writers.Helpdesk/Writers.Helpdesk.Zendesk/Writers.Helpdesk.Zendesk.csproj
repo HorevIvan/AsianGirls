@@ -52,7 +52,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Writers.Tickets\Writers.Tickets.csproj">
+    <ProjectReference Include="..\Writers.Helpdesk\Writers.Helpdesk.csproj">
       <Project>{46b32d59-5308-4a5e-820a-87857c0a3d32}</Project>
       <Name>Writers.Tickets</Name>
     </ProjectReference>
